@@ -14,8 +14,8 @@ jobs:
       - name: Checkout out the repository
         uses: actions/checkout@v3
 
-      - name: Build image container
-        run: docker build . --file Dockerfile
+      # - name: Build image container
+      #   run: docker build . --file Dockerfile
   test:
     name: Test app
     needs: setup
@@ -34,13 +34,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install ./src
-          npm ci ./src
+          npm install ./src/src
+          npm ci ./src/src
    
       - name: Build and Test app
         run: |
-          npm run build ./src
-          npm run test ./src
+          npm run build ./src/src
+          npm run test ./src/src
   # build:
   #   needs: setup
   #   runs-on: ubuntu-latest
