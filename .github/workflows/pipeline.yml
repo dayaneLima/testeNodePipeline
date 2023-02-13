@@ -17,8 +17,8 @@ jobs:
       # - name: Build image container
       #   run: docker build . --file Dockerfile
   test:
+    # needs: setup
     name: Test app
-    needs: setup
     runs-on: ubuntu-latest
     # defaults:
     #   run:
@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Checkout out the repository
         uses: actions/checkout@v3
-        
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
