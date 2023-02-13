@@ -17,12 +17,11 @@ jobs:
       # - name: Build image container
       #   run: docker build . --file Dockerfile
   test:
-    # needs: setup
     name: Test app
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: src
+    defaults:
+      run:
+        working-directory: ./src
 
     # strategy:
     #   matrix:
@@ -40,19 +39,15 @@ jobs:
 
       - name: Npm Ci
         run: npm ci
-        working-directory: ./src
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./src
    
       - name: Build app
         run: npm run build  --if-present
-        working-directory: ./src
    
       - name: BuiTestld app
         run: npm run test
-        working-directory: ./src
   # build:
   #   needs: setup
   #   runs-on: ubuntu-latest
