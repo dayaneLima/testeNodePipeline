@@ -125,6 +125,8 @@ git push -u origin main
 # https://docs.github.com/pt/actions
 # https://docs.github.com/pt/actions/deployment/about-deployments/deploying-with-github-actions
 # https://docs.github.com/pt/actions/using-workflows/workflow-syntax-for-github-actions
+# https://docs.github.com/pt/github-ae@latest/actions/automating-builds-and-tests/building-and-testing-nodejs
+# https://blog.devgenius.io/how-to-build-and-run-a-nodejs-app-with-docker-github-actions-59eb264dfef5
 
 # Configuração github Actions:
     # Crie uma pasta na raiz chamada .github/workflows
@@ -133,6 +135,12 @@ git push -u origin main
 mkdir .github
 mkdir .github/workflows
 touch .github/workflows/pipeline.yml
+
+# Exemplo básico até o job setup
+
+### TESTE
+# Exemplo básico até o job test
+# Crie na raiz um arquivo chamado .dockerignore
 
 #----------------------------------------------
 #----------------------------------------------
