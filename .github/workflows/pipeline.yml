@@ -34,13 +34,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install ./src/src
-          npm ci ./src/src
+          npm install src/src
+          npm ci src/src
    
       - name: Build and Test app
         run: |
-          npm run build ./src/src
-          npm run test ./src/src
+          npm run build src/src
+          npm run test src/src
   # build:
   #   needs: setup
   #   runs-on: ubuntu-latest
