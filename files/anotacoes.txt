@@ -1,3 +1,22 @@
+#----------------------------------------------
+#----------------------------------------------
+
+#####   COMANDOS DOCKER  ##########
+
+# Buildar a imagem
+docker-compose -f files/docker-compose.yml build
+
+# Subir o container
+docker-compose -f files/docker-compose.yml up -d
+
+# Matar o container
+docker-compose -f files/docker-compose.yml down
+
+# Entrar no terminal do container
+docker exec -it node-teste bash
+
+#----------------------------------------------
+#----------------------------------------------
 #####   CRIAÇÃO APLICAÇÃO BÁSICA NODEJS + TS  ##########
 
 # Referencias: 
@@ -92,7 +111,7 @@ git status
 # Continuação
 
 git add *
-git commit -m "first commit"
+git commit -m "inicio"
 git branch -M main
 git remote add origin https://github.com/dayaneLima/testeNodePipeline.git
 git push -u origin main
@@ -101,6 +120,11 @@ git push -u origin main
 #----------------------------------------------
 
 #####   GITHUB ACTIONS  ##########
+
+# Referências
+# https://docs.github.com/pt/actions
+# https://docs.github.com/pt/actions/deployment/about-deployments/deploying-with-github-actions
+# https://docs.github.com/pt/actions/using-workflows/workflow-syntax-for-github-actions
 
 # Configuração github Actions:
     # Crie uma pasta na raiz chamada .github/workflows

@@ -1,0 +1,29 @@
+name: Teste Node CI/CD
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  setup:
+    name: Setup app
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout out the repository
+        uses: actions/checkout@v3
+
+      - name: Build image container
+        run:
+          - docker build . --file Dockerfile
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: 
