@@ -1,0 +1,161 @@
+#####   CRIAÇÃO APLICAÇÃO BÁSICA NODEJS + TS  ##########
+
+# Referencias: 
+# https://auth0.com/blog/node-js-and-typescript-tutorial-build-a-crud-api/
+# https://www.section.io/engineering-education/how-to-create-a-simple-rest-api-using-typescript-and-nodejs/
+
+# Comandos iniciais (instalações e arquivo de configuração)
+cd src
+npm init -y
+npm i express dotenv cors helmet
+npm i -D typescript
+npm i -D ts-node-dev
+npm i -D @types/node @types/express @types/dotenv @types/cors @types/helmet
+npm i -D nodemon
+node_modules/typescript/bin/tsc --init
+touch .env
+
+# Adicione no .env a seguinte config:
+PORT=8000
+
+# Criação de pastas e arquivos
+mkdir src
+mkdir src/controllers
+mkdir src/routes
+
+touch src/app.ts
+touch src/server.ts
+touch src/routes/login.ts
+touch src/controllers/loginController.ts
+
+mkdir tests
+
+#----------------------------------------------
+#----------------------------------------------
+
+#####   JEST  ##########
+
+# Jest recognizes test file in three ways:
+#    files that have extension .test.js
+#    files that have extension .spec.js
+#    All files inside __tests__ folder or directory.
+
+
+# Instalação
+npm i -D cross-env
+#cross-env - an operating system agnostic package for setting environment variables. 
+
+# Referência
+https://medium.com/@natnael.awel/how-to-setup-testing-for-typescript-with-express-js-example-83d3efbb6fd4
+
+# Instalação
+npm install --save-dev jest supertest
+npm i -D ts-jest @types/jest @types/supertest
+
+# Inicialização (Configure jest which creates jest.config.js)
+npx ts-jest config:init
+
+# Npx para alterar o package.json (After changing the package.json file we can simply run the npx)
+npx jest
+
+# Criação arquivo de teste
+touch tests/routes.test.ts
+
+# Adição do comando no package.json
+"test": "cross-env NODE_ENV=test jest --testTimeout=10000"
+
+# Comando para rodar os testes
+npm test 
+
+#----------------------------------------------
+#----------------------------------------------
+
+#####   SUBINDO APLICAÇÃO GITHUB ##########
+
+# Vá no github: https://github.com/
+# Clique em new e crie um novo repotirório
+
+# Comandos para iniciar o repositório local:
+# Os comandos são executados fora do container, para não precisar instalar git no container
+
+git init
+
+# crie um arquivo dentro de src/src chamado .gitignore
+#   procure na internet algum exemplo de .gitignore para projetos node ou use o meu desse projeto
+
+
+# para ver se o arquivo .gitignore está ignorando os arquivos que voce deseja (como a node_modules)
+# utilize o comando gitstatus, para ver os arquivos listados
+
+git status 
+
+# Continuação
+
+git add *
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/dayaneLima/testeNodePipeline.git
+git push -u origin main
+
+#----------------------------------------------
+#----------------------------------------------
+
+#####   GITHUB ACTIONS  ##########
+
+# Configuração github Actions:
+    # Crie uma pasta na raiz chamada .github/workflows
+    # Dentro dela crie o arquivo pipeline.yml
+
+mkdir .github
+mkdir .github/workflows
+touch .github/workflows/pipeline.yml
+
+#----------------------------------------------
+#----------------------------------------------
+
+#####   FLY.IO + GITHUB ACTIONS  ##########
+
+# Instalação fly.io no mac
+# url: https://fly.io/docs/hands-on/install-flyctl/
+# comandos:
+    brew install flyctl OU curl -L https://fly.io/install.sh | sh
+
+
+# Sobre o fly.io plano free
+    # Run up to 3 shared CPU VMs for free, full time.
+    # Volumes from 1 to 500GB, up to 3GB are free. 
+    # Unlimited IPv6 and at least one free IPv4 per app. 
+
+
+# Geração do token
+    # Na pasta do projeto digite:
+        /Users/dayane/.fly/bin/flyctl auth token
+
+    # Caso não esteja logado, irá solicitar o login
+        /Users/dayane/.fly/bin/flyctl auth login
+
+    # O comando "flyctl auth token" irá gerar um token que deverá ser adicionado no github
+        # Vá no repositório do projeto no github:
+        # Vá em settings -> Secrets and variables -> Actions
+        # Clique em "New repository secret"
+        # Como Name do secret, adicione: FLY_API_TOKEN
+        # Como secret, coloque a chave gerada
+
+
+# Voltando ao terminal na pasta do projeto 
+    # comando:
+        /Users/dayane/.fly/bin/flyctl launch
+    # irá pedir algumas informações: nome do projeto e local de hospedagem
+    # remova do .dockerignore e do .gitignore o arquivo fly.toml que será gerado assim que executar o comando acima
+
+
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "build": "tsc",
+    "dev": "./node_modules/.bin/nodemon --watch 'src/' --exec \"ts-node src/server.ts\" -e ts",
+    "start_nodemon": "nodemon ./dist/server.js",
+    "prod_nodemon": "npm run build && npm run start_nodemon",
+    "start": "sudo pm2 start ./dist/server.js --name \"middleware-webassist\" ",
+    "del": "pm2 delete middleware-webassist",
+    "prod": "npm run build && npm run start"

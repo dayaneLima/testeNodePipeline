@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  node-teste:
+    container_name: node-teste
+    build:
+      context: ../
+      # target: "production"
+      target: "development"
+    volumes:
+      - ../:/app
+    ports:
+      - "8000:8000"
