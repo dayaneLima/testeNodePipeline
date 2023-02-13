@@ -20,9 +20,9 @@ jobs:
     name: Test app
     needs: setup
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src
+    # defaults:
+    #   run:
+    #     working-directory: ./testeNodePipeline/src
 
     # strategy:
     #   matrix:
@@ -37,11 +37,13 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd src
           npm install
           npm ci
    
       - name: Build and Test app
         run: |
+          cd src
           npm run build
           npm run test
   # build:
