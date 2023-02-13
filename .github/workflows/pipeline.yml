@@ -20,7 +20,10 @@ jobs:
     name: Test app
     needs: setup
     runs-on: ubuntu-latest
-    
+    defaults:
+      run:
+        working-directory: ./app
+        
     # strategy:
     #   matrix:
     #     node-version: [19.6.0]
@@ -34,13 +37,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install src/src
-          npm ci src/src
+          npm install
+          npm ci
    
       - name: Build and Test app
         run: |
-          npm run build src/src
-          npm run test src/src
+          npm run build
+          npm run test
   # build:
   #   needs: setup
   #   runs-on: ubuntu-latest
