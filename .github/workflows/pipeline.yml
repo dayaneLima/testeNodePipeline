@@ -17,28 +17,30 @@ jobs:
       - name: Build image container
         run: docker build . --file Dockerfile
   test:
+    name: Test app
     needs: setup
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: [19.6.0]
+    # strategy:
+    #   matrix:
+    #     node-version: [19.6.0]
 
     steps:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 19.6.0
+          # node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
         run: |
-          npm install
-          npm ci 
+          npm install ./src
+          npm ci ./src
    
       - name: Build and Test app
         run: |
-          npm run build
-          npm run test
+          npm run build ./src
+          npm run test ./src
   # build:
   #   needs: setup
   #   runs-on: ubuntu-latest
