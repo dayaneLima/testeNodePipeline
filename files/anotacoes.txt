@@ -183,16 +183,6 @@ touch .github/workflows/pipeline.yml
     # comando:
         /Users/dayane/.fly/bin/flyctl launch
     # irá pedir algumas informações: nome do projeto e local de hospedagem
+    # após a execução, irá gerar na raiz do seu projeto um arquivo fly.tom
+    # alterei a porta no .env do projeto para 8080 devido ao fly.io disponibilizar essa porta
     # remova do .dockerignore e do .gitignore o arquivo fly.toml que será gerado assim que executar o comando acima
-
-
-
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc",
-    "build": "tsc",
-    "dev": "./node_modules/.bin/nodemon --watch 'src/' --exec \"ts-node src/server.ts\" -e ts",
-    "start_nodemon": "nodemon ./dist/server.js",
-    "prod_nodemon": "npm run build && npm run start_nodemon",
-    "start": "sudo pm2 start ./dist/server.js --name \"middleware-webassist\" ",
-    "del": "pm2 delete middleware-webassist",
-    "prod": "npm run build && npm run start"
