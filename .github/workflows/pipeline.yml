@@ -6,17 +6,10 @@ on:
   pull_request:
     branches:
       - main
+env:
+  NODE_VERSION: '19.6.0'
 jobs:
-  # setup:
-  #   name: Setup app
-  #   runs-on: ubuntu-latest
-  #   steps: 
-  #     - name: Checkout out the repository
-  #       uses: actions/checkout@v3
-
-      # - name: Build image container
-      #   run: docker build . --file Dockerfile
-  test:
+  build:
     name: Test app
     runs-on: ubuntu-latest
     defaults:
@@ -34,7 +27,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: 19.6.0
+          node-version: ${{ env.NODE_VERSION }}
           # node-version: ${{ matrix.node-version }}
 
       - name: Npm Ci
@@ -48,9 +41,14 @@ jobs:
    
       - name: Test app
         run: npm run test
-  # build:
-  #   needs: setup
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Up container
-  #       run: 
+
+      - name: Njsscan check
+        id: njsscan
+        uses: ajinabraham/njsscan-action@master
+        with:
+          args: '.' 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy

@@ -136,11 +136,16 @@ mkdir .github
 mkdir .github/workflows
 touch .github/workflows/pipeline.yml
 
-# Exemplo básico até o job setup
+# Exemplo básico até o job build
 
 ### TESTE
-# Exemplo básico até o job test
+# Exemplo básico até o job build
 # Crie na raiz um arquivo chamado .dockerignore
+
+### Segurança
+# Referência
+# https://geekflare.com/nodejs-security-scanner/
+# https://github.com/ajinabraham/NodeJsScan
 
 #----------------------------------------------
 #----------------------------------------------
