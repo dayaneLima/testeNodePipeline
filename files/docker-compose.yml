@@ -5,8 +5,8 @@ services:
     container_name: node-teste
     build:
       context: ../
-      # target: "production"
-      target: "development"
+      target: "production"
+      # target: "development"
     volumes:
       - ../:/app
     ports:
