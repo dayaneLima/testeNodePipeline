@@ -38,6 +38,26 @@ jobs:
    
       - name: Build app
         run: npm run build  --if-present
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
+    steps:
+      - name: Checkout out the repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Npm Ci
+        run: npm ci
+
+      - name: Install dependencies
+        run: npm install
    
       - name: Test unit
         run: npm run test:unit
@@ -52,7 +72,7 @@ jobs:
           args: '.' 
   deploy:
     name: Deploy
-    needs: build
+    needs: [build, tests]
     runs-on: ubuntu-latest
     env:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
