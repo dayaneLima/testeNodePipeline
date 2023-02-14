@@ -56,7 +56,7 @@ mkdir tests
 #----------------------------------------------
 
 #####   JEST  ##########
-
+# https://stackoverflow.com/questions/50171932/run-jest-test-suites-in-groups
 # Jest recognizes test file in three ways:
 #    files that have extension .test.js
 #    files that have extension .spec.js
@@ -88,6 +88,13 @@ touch tests/routes.test.ts
 
 # Comando para rodar os testes
 npm test 
+
+## Separar por grupos os testes tente usar o describe
+        describe('Integration Test', () => {
+        describe('Unit Test', () => {
+    # E adicionado no package.sjon mais dois scrips:
+        "test:unit": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=ProdTest",
+        "test:integration": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=DevTest",
 
 #----------------------------------------------
 #----------------------------------------------

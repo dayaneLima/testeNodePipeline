@@ -1,7 +1,7 @@
-import app from "../src/app";
+import app from "../../src/app";
 import request from "supertest";
 
-describe('Post Endpoints', () => {
+describe('Integration Test', () => {
   it('should create a new post', async () => {
     const res = await request(app)
       .post('/login')
