@@ -49,6 +49,9 @@ touch src/controllers/loginController.ts
 
 mkdir tests
 
+# No arquivo tsconfig.json adicione o diretório do build:
+    "outDir": "./dist", 
+
 #----------------------------------------------
 #----------------------------------------------
 
