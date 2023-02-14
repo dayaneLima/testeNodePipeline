@@ -1,7 +1,7 @@
 import app from "../../src/app";
 import request from "supertest";
 
-describe('Integration Test', () => {
+describe('IntegrationTest', () => {
   it('should create a new post', async () => {
     const res = await request(app)
       .post('/login')

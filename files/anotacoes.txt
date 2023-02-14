@@ -90,11 +90,11 @@ touch tests/routes.test.ts
 npm test 
 
 ## Separar por grupos os testes tente usar o describe
-        describe('Integration Test', () => {
-        describe('Unit Test', () => {
+        describe('IntegrationTest', () => {
+        describe('UnitTest', () => {
     # E adicionado no package.sjon mais dois scrips:
-        "test:unit": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=ProdTest",
-        "test:integration": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=DevTest",
+        "test:unit": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=UnitTest",
+        "test:integration": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=IntegrationTest",
 
 #----------------------------------------------
 #----------------------------------------------

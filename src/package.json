@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "test:unit": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=ProdTest",
-    "test:integration": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=DevTest",
+    "test:unit": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=UnitTest",
+    "test:integration": "cross-env NODE_ENV=test jest  --testTimeout=10000 --testNamePattern=IntegrationTest",
     "cypress:run": "./node_modules/.bin/cypress run -P tests",
     "dev": "./node_modules/.bin/nodemon --watch 'src/' --exec \"ts-node src/server.ts\" -e ts",
     "prod": "node dist/src/server.js",
