@@ -41,7 +41,7 @@ WORKDIR /app
 FROM base as development
 COPY . .
 WORKDIR /app/src
-EXPOSE 8000
+EXPOSE 8080
 # usado para o container não morrer enquanto a aplicação não foi criada, ao descomentar a linha acima, comente essa abaixo
 # CMD tail -f /dev/null
 # Caso já tenha o node com o package.json mas ainda não tem o comando de inicialização (npm run dev, etc)

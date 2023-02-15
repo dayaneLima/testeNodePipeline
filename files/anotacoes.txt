@@ -130,6 +130,14 @@ git push -u origin main
 #----------------------------------------------
 #----------------------------------------------
 
+#####   ESLINT ##########
+
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+touch .eslintrc 
+touch .eslintignore
+#----------------------------------------------
+#----------------------------------------------
+
 #####   GITHUB ACTIONS  ##########
 
 # Referências
